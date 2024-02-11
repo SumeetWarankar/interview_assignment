@@ -5,12 +5,12 @@ import json
 import logging
 import os
 
-username = "api_atomiq_dr_user"  # api_uts_consumer_cmi_user
-password = "dUL$QW}hSv}=m4XD"
-api_key = "5yljWHsGmF5Losshriisp6K1wplazBRoa5AQ92lC"
-api_url = "https://mrfsp5ouc6.execute-api.us-east-1.amazonaws.com/development/authresource"
-userpoolid = "us-east-1_fXpQ3AO2i"
-identity_pool_id = "us-east-1:00f60c51-8215-4615-84b1-dbebe2351c20"
+username = "" 
+password = ""
+api_key = ""
+api_url = ""
+userpoolid = "i"
+identity_pool_id = ""
     
 def get_token():
 
