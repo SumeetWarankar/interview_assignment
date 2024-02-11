@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  This template provisions yLambda function
+
+Mappings:
+  DefaultValues:
+    S3:
+      '730335362853': 'nice-assignment'
+    IAMRoles:
+      '730335362853': 'arn:aws:iam::730335362853:role/lambda_function_role'
+
+Parameters:
+  ReleaseVersion:
+    Type: String
+    Description: 'Release version of the code'
+    Default: '24.03'
+
+Resources:
+  LambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: PullPushS3FileLambdaFunction
+      Handler: PullPushS3FileLambdaFunction.lambda_handler
+      Timeout: 60
+      Code:
+        S3Bucket: !FindInMap [DefaultValues, S3, !Ref AWS::AccountId] 
+        S3Key: !Sub 'function/PullPushS3FileLambdaFunction_${ReleaseVersion}.zip'
+      Role: !FindInMap [DefaultValues, IAMRoles, !Ref AWS::AccountId]
+      Runtime: python3.11
+      Environment:
+        Variables:
+          S3_BUCKET_NAME: !FindInMap [DefaultValues, S3, !Ref AWS::AccountId]
+      Tags:
+        - Value: !Ref ReleaseVersion
+          Key: 'lambda:releaseVersion'
