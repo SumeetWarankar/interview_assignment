@@ -1,14 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'ilgss0854.corp.amdocs.com'
+        }
+    }
     stages {
         stage('Deploy to AWS') {
-            steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding', 
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
-                    credentialsId: 'cli_aws_keys', 
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
+            steps { 
                     sh '''
                         echo "Hello"
                         // aws cloudformation deploy \
@@ -22,7 +20,7 @@ pipeline {
                         //     --function-name my-function \
                         //     response.json
                     '''
-                }
+                
             }
         }
     }
