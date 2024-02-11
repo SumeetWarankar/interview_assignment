@@ -8,3 +8,4 @@ def deploy_cft(String templatePath, String stackName, String region) {
             --region ${region}
     """
 }
+return this
