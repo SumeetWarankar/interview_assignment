@@ -9,7 +9,7 @@ pipeline {
             steps { 
                 script {
                     def awsCfnDeploy = load "deploy.groovy"
-                    awsCfnDeploy.deploy_cft("lambda_cft.yaml", "s3-pull-push-lambda-function", "us-east-1")
+                    awsCfnDeploy.deploy_cft("lambda_cft.yaml", "s3-pull-push-lambda-function", "us-east-1", "24.04")
                 }  
             }
         }
