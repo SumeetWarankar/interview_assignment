@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'ilgss0854.corp.amdocs.com'
+            label 'test.com'
         }
     }
     stages {
